@@ -256,7 +256,7 @@ const menuItems = [
     descripcion: "",
     precio: 4200,
     categoria: "bebidas gaseosas",
-    imagen: "productos_imagenes/bar-heladeria/insertarnombre",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768166574/hit250_u193o1.jpg",
   },
    {
     nombre: "Hit grande",
