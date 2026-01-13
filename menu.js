@@ -142,14 +142,14 @@ const menuItems = [
   {
     nombre: "Michelado - Frutos rojos",
     descripcion: "",
-    precio: 4200,
+    precio: 10000,
     categoria: "michelados",
     imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105010/micheladorosa_frfa5f.jpg",
   },
   {
     nombre: "Michelado - Mango",
     descripcion: "",
-    precio: 3600,
+    precio: 10000,
     categoria: "michelados",
     imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105010/micheladomango_n1lgpw.jpg",
   },
