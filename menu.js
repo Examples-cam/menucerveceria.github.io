@@ -567,13 +567,6 @@ const menuItems = [
     imagen: "productos_imagenes/bar-heladeria/insertarnombre",
   },
   {
-    nombre: "Nucita",
-    descripcion: "",
-    precio: 0,
-    categoria: "dulceria - bar",
-    imagen: "productos_imagenes/bar-heladeria/insertarnombre",
-  },
-  {
     nombre: "Jumbo",
     descripcion: "",
     precio: 7500,
@@ -587,13 +580,7 @@ const menuItems = [
     categoria: "dulceria - bar",
     imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/v1768112100/jumbitomini_fnyg2c.jpg",
   },
-  {
-    nombre: "Paleta Tosh",
-    descripcion: "",
-    precio: 0,
-    categoria: "dulceria - bar",
-    imagen: "productos_imagenes/bar-heladeria/insertarnombre",
-  },
+  
   {
     nombre: "Bocatto",
     descripcion: "",
