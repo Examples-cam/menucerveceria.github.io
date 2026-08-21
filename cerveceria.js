@@ -3,1341 +3,1013 @@
    CERVECERÍA
    ========================================================= */
 
-/* =========================================================
-   VARIABLES
-   ========================================================= */
-
-:root {
-
-  --bg: #17130f;
-  --bg-soft: #211b15;
-  --surface: #f4eee3;
-  --surface-2: #ebe1d1;
-  --card: #fffdf8;
-
-  --text: #29221b;
-  --text-light: #fffdf8;
-  --muted: #786d60;
-
-  --gold: #b08a4b;
-  --gold-light: #d6bc8d;
-
-  --border-light: rgba(41, 34, 27, .10);
-  --border-dark: rgba(214, 188, 141, .18);
-
-  --shadow-soft:
-    0 20px 55px rgba(0, 0, 0, .12);
-
-  --shadow-dark:
-    0 25px 70px rgba(0, 0, 0, .30);
-
-  --radius-small: 0;
-  --transition:
-    .30s cubic-bezier(.2, .7, .2, 1);
-}
-
 
 /* =========================================================
-   RESET
+   DATOS DEL MENÚ
    ========================================================= */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+const menuItems = [
+
+  /* =======================================================
+     CERVEZAS
+  ======================================================= */
+
+  {
+    nombre: "Corona 330 ml",
+    descripcion: "",
+    precio: 15600,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105003/corona330_lmquee.jpg"
+  },
+
+  {
+    nombre: "Stella Artois",
+    descripcion: "",
+    precio: 15600,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105017/stella_rxlgep.jpg"
+  },
+
+  {
+    nombre: "Tres Cordilleras Negra",
+    descripcion: "",
+    precio: 15600,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105017/trescornegra_bx7wwj.jpg"
+  },
+
+  {
+    nombre: "Tres Cordilleras Rosada",
+    descripcion: "",
+    precio: 13200,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105018/trescorrosada_th0a7e.jpg"
+  },
+
+  {
+    nombre: "Tres Cordilleras Roja",
+    descripcion: "",
+    precio: 13200,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105018/trescorroja_fd5rgg.jpg"
+  },
+
+  {
+    nombre: "Tres Cordilleras Verde",
+    descripcion: "",
+    precio: 13200,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105018/trescorverde_ngobt6.jpg"
+  },
+
+  {
+    nombre: "Heineken",
+    descripcion: "",
+    precio: 13200,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105003/heineken_l2ant3.jpg"
+  },
+
+  {
+    nombre: "Budweiser lata",
+    descripcion: "",
+    precio: 8950,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104990/budweiser_oro8ma.jpg"
+  },
+
+  {
+    nombre: "Águila original 330 ml",
+    descripcion: "",
+    precio: 8950,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104990/aguilaoriginal_rkmqtf.jpg"
+  },
+
+  {
+    nombre: "Águila light 330 ml",
+    descripcion: "",
+    precio: 8950,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104990/aguilalight_cfxxhs.jpg"
+  },
+
+  {
+    nombre: "Poker 330 ml",
+    descripcion: "",
+    precio: 8950,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105011/poker330_kvaifl.jpg"
+  },
+
+  {
+    nombre: "Sol 330 ml",
+    descripcion: "",
+    precio: 13200,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105012/sol330_finfhj.jpg"
+  },
+
+  {
+    nombre: "Reeds",
+    descripcion: "",
+    precio: 8950,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105011/redds_ukq0qh.jpg"
+  },
+
+  {
+    nombre: "Club Colombia",
+    descripcion: "",
+    precio: 9600,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104991/clubcolombia_en6xny.jpg"
+  },
+
+  {
+    nombre: "Cola y pola",
+    descripcion: "",
+    precio: 8600,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104991/colapola_sutuea.jpg"
+  },
+
+  {
+    nombre: "Andina 330 ml",
+    descripcion: "",
+    precio: 8000,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768104990/andina330_eka6mn.jpg"
+  },
+
+  {
+    nombre: "Jarra refajo",
+    descripcion: "",
+    precio: 22500,
+    categoria: "cervezas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768106512/jarrarefajo_cdu9cq.jpg"
+  },
 
 
-html {
-  scroll-behavior: smooth;
-  background: var(--surface);
-}
+  /* =======================================================
+     MICHELADOS
+  ======================================================= */
+
+  {
+    nombre: "Michelado tradicional",
+    descripcion: "",
+    precio: 4200,
+    categoria: "michelados",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105018/vasomichelado_eynoic.jpg"
+  },
+
+  {
+    nombre: "Michelado - Frutos rojos",
+    descripcion: "",
+    precio: 10000,
+    categoria: "michelados",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105010/micheladorosa_frfa5f.jpg"
+  },
+
+  {
+    nombre: "Michelado - Mango",
+    descripcion: "",
+    precio: 10000,
+    categoria: "michelados",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768105010/micheladomango_n1lgpw.jpg"
+  },
 
 
-body {
+  /* =======================================================
+     LICORES - BAR
+  ======================================================= */
 
-  min-width: 320px;
+  {
+    nombre: "Botella - Antioqueño azul",
+    descripcion: "",
+    precio: 130900,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112066/botellaaguardienteazul_ebhbg3.jpg"
+  },
 
-  background: var(--surface);
+  {
+    nombre: "Media - Antioqueño azul",
+    descripcion: "",
+    precio: 71400,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112109/medioaguartienteazul_zy0lxb.jpg"
+  },
 
-  color: var(--text);
+  {
+    nombre: "Botella - Antioqueño verde",
+    descripcion: "",
+    precio: 125000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112066/botellaaguardienteverde_pyyjzw.jpg"
+  },
 
-  font-family:
-    "DM Sans",
-    sans-serif;
+  {
+    nombre: "Media - Antioqueño verde",
+    descripcion: "",
+    precio: 65000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112106/medioaguardienteverde_lpu4qg.jpg"
+  },
 
-  line-height: 1.6;
+  {
+    nombre: "Botella amarillo - Real Antioqueño",
+    descripcion: "",
+    precio: 125000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112066/botellaamarilloreal_za73gy.jpg"
+  },
 
-  overflow-x: hidden;
-}
+  {
+    nombre: "Botella - Ron Medellín 3 años",
+    descripcion: "",
+    precio: 130900,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112072/botellaronmedellin3_y7gryb.jpg"
+  },
+
+  {
+    nombre: "Media - Ron Medellín 3 años",
+    descripcion: "",
+    precio: 71400,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112110/medioronmedellin3_d1n3lz.jpg"
+  },
+
+  {
+    nombre: "Botella - Ron rosado",
+    descripcion: "",
+    precio: 125000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112072/botellaronrosado_qmayqm.jpg"
+  },
+
+  {
+    nombre: "Botella - Ron Medellín",
+    descripcion: "",
+    precio: 125000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112071/botellaron_luneuk.jpg"
+  },
+
+  {
+    nombre: "Media - Ron Medellín",
+    descripcion: "",
+    precio: 65000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112109/medioron_y1dm6o.jpg"
+  },
+
+  {
+    nombre: "Botella - Ron Caldas",
+    descripcion: "",
+    precio: 130900,
+    categoria: "licores - bar",
+    imagen: ""
+  },
+
+  {
+    nombre: "Media - Ron Caldas",
+    descripcion: "",
+    precio: 71400,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112109/medioroncaldas_g91erw.jpg"
+  },
+
+  {
+    nombre: "Media - Brandy",
+    descripcion: "",
+    precio: 84000,
+    categoria: "licores - bar",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112109/mediobrandy_whmlzl.jpg"
+  },
+
+  {
+    nombre: "Botella - Cristal XS < S < L",
+    descripcion: "",
+    precio: 110000,
+    categoria: "licores - bar",
+    imagen: ""
+  },
 
 
-body.modal-open {
-  overflow: hidden;
-}
+  /* =======================================================
+     BEBIDAS GASEOSAS
+  ======================================================= */
+
+  {
+    nombre: "Hit 250 ml",
+    descripcion: "",
+    precio: 4200,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768166574/hit250_u193o1.jpg"
+  },
+
+  {
+    nombre: "Hit grande",
+    descripcion: "",
+    precio: 4200,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/w_auto,c_scale,q_auto,f_auto/v1768112099/hitgrande_z3gbg6.jpg"
+  },
+
+  {
+    nombre: "Gaseosas 250 ml",
+    descripcion: "",
+    precio: 4200,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112095/gaseosa250_qoi1sj.jpg"
+  },
+
+  {
+    nombre: "Gaseosas 350 ml",
+    descripcion: "",
+    precio: 5400,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112095/gaseosa350_djmt1l.jpg"
+  },
+
+  {
+    nombre: "Gaseosas - Postobón 1.5 L",
+    descripcion: "",
+    precio: 11400,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112091/gaseosa1_5_wh1eht.jpg"
+  },
+
+  {
+    nombre: "Gaseosas - Postobón 2.5 L",
+    descripcion: "",
+    precio: 16800,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112092/gaseosa2_5_h6hk52.jpg"
+  },
+
+  {
+    nombre: "Pony Malta 330 ml",
+    descripcion: "",
+    precio: 5400,
+    categoria: "bebidas gaseosas",
+    imagen: ""
+  },
+
+  {
+    nombre: "Pony Malta 1 L",
+    descripcion: "",
+    precio: 10500,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112119/ponylitro_z8q668.jpg"
+  },
+
+  {
+    nombre: "Coca Cola 350 ml",
+    descripcion: "",
+    precio: 5400,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112077/cocacola350_flbilx.jpg"
+  },
+
+  {
+    nombre: "Coca Cola 400 ml",
+    descripcion: "",
+    precio: 6600,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112080/cocacola400_xweuxr.jpg"
+  },
+
+  {
+    nombre: "Coca Cola 600 ml",
+    descripcion: "",
+    precio: 7800,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112080/cocacola600_qnuibo.jpg"
+  },
+
+  {
+    nombre: "Coca Cola 1.5 L",
+    descripcion: "",
+    precio: 13200,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112076/cocacola1_5_n6prvh.jpg"
+  },
+
+  {
+    nombre: "Coca Cola 2.25 L",
+    descripcion: "",
+    precio: 19200,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112076/cocacola2_25_ibztjd.jpg"
+  },
+
+  {
+    nombre: "H2O",
+    descripcion: "",
+    precio: 6500,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112095/h2o_hqhuhh.jpg"
+  },
+
+  {
+    nombre: "Gatorade",
+    descripcion: "",
+    precio: 7800,
+    categoria: "bebidas gaseosas",
+    imagen: "https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_800,dpr_auto/v1768112095/gatoradecerveceria_mv3h4p.jpg"
+  },
+
+  {
+    nombre: "Ginger Pequeña",
+    descripcion: "",
+    precio: 5400,
+    categoria: "bebidas gaseosas",
+    imagen: ""
+  },
+
+  {
+    nombre: "Speed Max",
+    descripcion: "",
+    precio: 4750,
+    categoria: "bebidas gaseosas",
+    imagen: ""
+  },
+
+  {
+    nombre: "Jugo del Valle",
+    descripcion: "",
+    precio: 6000,
+    categoria: "bebidas gaseosas",
+    imagen: ""
+  }
+
+];
 
 
-img {
-  display: block;
-  max-width: 100%;
-}
+/* =========================================================
+   CONFIGURACIÓN
+   ========================================================= */
+
+const INITIAL_VISIBLE = 8;
+
+const categoryNames = {
+  "cervezas": "CERVEZAS",
+  "michelados": "MICHELADOS",
+  "licores - bar": "LICORES - BAR",
+  "bebidas gaseosas": "BEBIDAS GASEOSAS"
+};
+
+const categoryEyebrows = {
+  "cervezas": "SELECCIÓN DE LA CASA",
+  "michelados": "PARA COMENZAR LA NOCHE",
+  "licores - bar": "SELECCIÓN DE BAR",
+  "bebidas gaseosas": "OPCIONES REFRESCANTES"
+};
 
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* =========================================================
+   REFERENCIAS DOM
+   ========================================================= */
+
+const menuContainer =
+  document.getElementById("menuContainer");
+
+const licoresPreview =
+  document.getElementById("licoresPreview");
+
+const gaseosasPreview =
+  document.getElementById("gaseosasPreview");
+
+const categoryButtons =
+  document.querySelectorAll(".category-btn");
+
+const categoryTitle =
+  document.getElementById("categoryTitle");
+
+const categoryEyebrow =
+  document.getElementById("categoryEyebrow");
+
+const viewAllButton =
+  document.getElementById("viewAll");
+
+const featureButton =
+  document.getElementById("featureButton");
+
+const modal =
+  document.getElementById("productModal");
+
+const modalImage =
+  document.getElementById("modalImage");
+
+const modalTitle =
+  document.getElementById("modalTitle");
+
+const modalDescription =
+  document.getElementById("modalDescription");
+
+const modalPrice =
+  document.getElementById("modalPrice");
+
+const menuToggle =
+  document.getElementById("menuToggle");
+
+const mobileNav =
+  document.getElementById("mobileNav");
+
+const backToTop =
+  document.getElementById("backToTop");
 
 
-button {
-  font: inherit;
-}
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+let currentCategory = "cervezas";
+
+let showingAll = false;
 
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
+/* =========================================================
+   FORMATEAR PRECIO
+   ========================================================= */
 
+function formatPrice(price) {
 
-.page-shell {
-  min-height: 100vh;
-  overflow: clip;
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0
+  }).format(price);
+
 }
 
 
 /* =========================================================
-   HEADER
+   CREAR TARJETA
    ========================================================= */
 
-.site-header {
+function createProductCard(item) {
 
-  position: sticky;
+  const card =
+    document.createElement("article");
 
-  top: 0;
+  card.className = "menu-card card-enter";
 
-  z-index: 100;
+  card.setAttribute(
+    "tabindex",
+    "0"
+  );
 
-  min-height: 76px;
+  card.setAttribute(
+    "aria-label",
+    `Ver detalles de ${item.nombre}`
+  );
 
-  padding:
-    0
-    clamp(20px, 5vw, 72px);
 
-  display: flex;
+  /* Imagen */
 
-  align-items: center;
+  const imageWrapper =
+    document.createElement("div");
 
-  justify-content: space-between;
+  imageWrapper.className =
+    "menu-card-image";
 
-  gap: 28px;
 
-  background:
-    rgba(23, 19, 15, .95);
+  if (item.imagen) {
 
-  color: var(--text-light);
+    const image =
+      document.createElement("img");
 
-  border-bottom:
-    1px solid
-    rgba(214, 188, 141, .14);
+    image.src = item.imagen;
 
-  backdrop-filter: blur(16px);
-}
+    image.alt = item.nombre;
 
+    image.loading = "lazy";
 
-/* =========================================================
-   BRAND
-   ========================================================= */
+    image.onerror = () => {
 
-.brand {
+      imageWrapper.innerHTML = "";
 
-  display: inline-flex;
+      imageWrapper.classList.add(
+        "no-image"
+      );
 
-  align-items: center;
+    };
 
-  gap: 12px;
+    imageWrapper.appendChild(image);
 
-  flex-shrink: 0;
-}
+  } else {
 
-
-.brand-mark {
-
-  width: 38px;
-  height: 38px;
-
-  display: grid;
-
-  place-items: center;
-
-  border:
-    1px solid
-    rgba(214, 188, 141, .55);
-
-  color: var(--gold-light);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size: 1.2rem;
-}
-
-
-.brand-copy {
-
-  display: flex;
-
-  flex-direction: column;
-
-  line-height: 1;
-}
-
-
-.brand-copy strong {
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  letter-spacing: .18em;
-
-  font-size: .92rem;
-
-  font-weight: 500;
-}
-
-
-.brand-copy small {
-
-  margin-top: 5px;
-
-  color: var(--gold-light);
-
-  font-size: .55rem;
-
-  letter-spacing: .20em;
-}
-
-
-/* =========================================================
-   DESKTOP NAVIGATION
-   ========================================================= */
-
-.desktop-nav {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap:
-    clamp(16px, 2vw, 32px);
-}
-
-
-.desktop-nav a {
-
-  color:
-    rgba(255, 253, 248, .68);
-
-  font-size: .66rem;
-
-  letter-spacing: .13em;
-
-  white-space: nowrap;
-
-  transition:
-    color var(--transition);
-}
-
-
-.desktop-nav a:hover,
-.desktop-nav a.is-active {
-
-  color: var(--gold-light);
-}
-
-
-/* =========================================================
-   HEADER ACTIONS
-   ========================================================= */
-
-.header-actions {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-}
-
-
-.reserve-button {
-
-  padding:
-    11px 17px;
-
-  border:
-    1px solid
-    rgba(214, 188, 141, .55);
-
-  color: var(--gold-light);
-
-  font-size: .66rem;
-
-  letter-spacing: .13em;
-
-  white-space: nowrap;
-
-  transition:
-    background var(--transition),
-    color var(--transition),
-    border-color var(--transition);
-}
-
-
-.reserve-button:hover {
-
-  background: var(--gold);
-
-  border-color: var(--gold);
-
-  color: var(--bg);
-}
-
-
-/* =========================================================
-   MOBILE MENU BUTTON
-   ========================================================= */
-
-.menu-toggle {
-
-  display: none;
-
-  width: 42px;
-  height: 42px;
-
-  border:
-    1px solid
-    rgba(214, 188, 141, .35);
-
-  background: transparent;
-
-  color: var(--text-light);
-
-  cursor: pointer;
-}
-
-
-.menu-toggle span {
-
-  display: block;
-
-  width: 18px;
-  height: 1px;
-
-  margin: 4px auto;
-
-  background: currentColor;
-
-  transition:
-    transform var(--transition),
-    opacity var(--transition);
-}
-
-
-.menu-toggle.is-open span:nth-child(1) {
-
-  transform:
-    translateY(5px)
-    rotate(45deg);
-}
-
-
-.menu-toggle.is-open span:nth-child(2) {
-
-  opacity: 0;
-}
-
-
-.menu-toggle.is-open span:nth-child(3) {
-
-  transform:
-    translateY(-5px)
-    rotate(-45deg);
-}
-
-
-/* =========================================================
-   MOBILE NAV
-   ========================================================= */
-
-.mobile-nav {
-
-  position: fixed;
-
-  inset:
-    76px
-    0
-    auto
-    0;
-
-  z-index: 99;
-
-  display: flex;
-
-  flex-direction: column;
-
-  padding:
-    10px
-    24px
-    24px;
-
-  background:
-    rgba(23, 19, 15, .98);
-
-  border-bottom:
-    1px solid
-    rgba(214, 188, 141, .15);
-
-  transform:
-    translateY(-120%);
-
-  transition:
-    transform
-    .35s
-    cubic-bezier(.2, .7, .2, 1);
-}
-
-
-.mobile-nav.is-open {
-
-  transform:
-    translateY(0);
-}
-
-
-.mobile-nav a {
-
-  padding:
-    16px
-    4px;
-
-  border-bottom:
-    1px solid
-    rgba(255, 255, 255, .08);
-
-  color:
-    rgba(255, 253, 248, .78);
-
-  font-size: .72rem;
-
-  letter-spacing: .14em;
-
-  transition:
-    color var(--transition);
-}
-
-
-.mobile-nav a:hover {
-
-  color: var(--gold-light);
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero {
-
-  position: relative;
-
-  min-height:
-    min(
-      760px,
-      calc(100vh - 76px)
+    imageWrapper.classList.add(
+      "no-image"
     );
 
-  padding:
-    clamp(60px, 8vw, 120px)
-    clamp(24px, 8vw, 120px);
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, .9fr)
-    minmax(360px, 1.1fr);
-
-  align-items: center;
-
-  gap:
-    clamp(40px, 7vw, 110px);
-
-  background:
-
-    radial-gradient(
-      circle at 70% 35%,
-      rgba(176, 138, 75, .13),
-      transparent 35%
-    ),
-
-    var(--surface);
-}
+  }
 
 
-/* =========================================================
-   HERO COPY
-   ========================================================= */
+  /* Contenido */
 
-.hero-copy {
+  const content =
+    document.createElement("div");
 
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 610px;
-}
+  content.className =
+    "menu-card-content";
 
 
-.eyebrow {
+  const title =
+    document.createElement("h3");
 
-  margin-bottom: 16px;
-
-  color: var(--gold);
-
-  font-size: .62rem;
-
-  letter-spacing: .22em;
-
-  font-weight: 600;
-}
+  title.textContent =
+    item.nombre;
 
 
-.hero h1 {
+  if (item.descripcion) {
 
-  max-width: 650px;
+    const description =
+      document.createElement("p");
 
-  font-family:
-    "Playfair Display",
-    serif;
+    description.textContent =
+      item.descripcion;
 
-  font-size:
-    clamp(
-      3.6rem,
-      7.5vw,
-      7.4rem
+    content.appendChild(
+      description
     );
 
-  line-height: .88;
-
-  font-weight: 400;
-
-  letter-spacing: -.035em;
-}
+  }
 
 
-.hero h1 em {
+  const price =
+    document.createElement("span");
 
-  color: var(--gold);
+  price.className =
+    "price";
 
-  font-style: italic;
-}
-
-
-.ornament {
-
-  margin:
-    25px 0
-    18px;
-
-  color: var(--gold);
-
-  font-size: .8rem;
-}
+  price.textContent =
+    formatPrice(item.precio);
 
 
-.hero-text {
+  content.insertBefore(
+    title,
+    content.firstChild
+  );
 
-  max-width: 480px;
-
-  margin-bottom: 30px;
-
-  color: var(--muted);
-
-  font-size: .94rem;
-}
+  content.appendChild(price);
 
 
-/* =========================================================
-   OUTLINE BUTTON
-   ========================================================= */
+  card.appendChild(
+    imageWrapper
+  );
 
-.outline-button {
-
-  min-height: 46px;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 30px;
-
-  padding:
-    0 18px;
-
-  border:
-    1px solid
-    var(--gold);
-
-  background: transparent;
-
-  color: var(--gold);
-
-  font-size: .62rem;
-
-  letter-spacing: .16em;
-
-  cursor: pointer;
-
-  transition:
-    background var(--transition),
-    color var(--transition),
-    transform var(--transition);
-}
+  card.appendChild(
+    content
+  );
 
 
-.outline-button:hover {
+  /* Abrir modal */
 
-  background: var(--gold);
+  const openCard = () => {
 
-  color: var(--text-light);
+    openModal(item);
 
-  transform:
-    translateY(-2px);
-}
+  };
 
 
-.outline-button span {
+  card.addEventListener(
+    "click",
+    openCard
+  );
 
-  font-size: .85rem;
+
+  card.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+
+        openCard();
+
+      }
+
+    }
+  );
+
+
+  return card;
+
 }
 
 
 /* =========================================================
-   HERO VISUAL
+   RENDER PRODUCTOS
    ========================================================= */
 
-.hero-visual {
+function renderProducts(
+  container,
+  items,
+  limit = null
+) {
 
-  position: relative;
+  if (!container) return;
 
-  min-height:
-    min(650px, 70vh);
+  container.innerHTML = "";
 
-  display: grid;
 
-  place-items: center;
-}
+  const visibleItems =
+    limit === null
+      ? items
+      : items.slice(0, limit);
 
 
-.hero-halo {
+  if (visibleItems.length === 0) {
 
-  position: absolute;
+    const empty =
+      document.createElement("p");
 
-  width:
-    min(70vw, 560px);
+    empty.textContent =
+      "No hay productos disponibles.";
 
-  aspect-ratio: 1;
+    empty.style.color =
+      "var(--muted)";
 
-  border-radius: 50%;
-
-  background:
-    rgba(176, 138, 75, .08);
-}
-
-
-.hero-ring {
-
-  position: absolute;
-
-  width:
-    min(60vw, 470px);
-
-  aspect-ratio: 1;
-
-  border:
-    1px solid
-    rgba(176, 138, 75, .35);
-
-  border-radius: 50%;
-}
-
-
-.hero-visual img {
-
-  position: relative;
-
-  z-index: 2;
-
-  width:
-    min(70%, 470px);
-
-  aspect-ratio: 4 / 5;
-
-  object-fit: cover;
-
-  box-shadow:
-    var(--shadow-soft);
-
-  animation:
-    floatImage
-    7s
-    ease-in-out
-    infinite;
-}
-
-
-.hero-caption {
-
-  position: absolute;
-
-  right: 0;
-
-  bottom: 8%;
-
-  z-index: 3;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  color: var(--gold);
-
-  font-size: .58rem;
-
-  letter-spacing: .18em;
-}
-
-
-.hero-caption i {
-
-  width: 46px;
-  height: 1px;
-
-  background: var(--gold);
-}
-
-
-/* =========================================================
-   CATEGORY SECTION
-   ========================================================= */
-
-.category-section {
-
-  padding:
-    28px
-    clamp(24px, 8vw, 120px)
-    20px;
-
-  background: var(--bg);
-
-  color: var(--text-light);
-}
-
-
-.section-kicker {
-
-  margin-bottom: 14px;
-
-  color: var(--gold-light);
-
-  font-size: .60rem;
-
-  letter-spacing: .20em;
-}
-
-
-.categories {
-
-  display: flex;
-
-  gap: 10px;
-
-  overflow-x: auto;
-
-  scrollbar-width: none;
-
-  padding-bottom: 3px;
-}
-
-
-.categories::-webkit-scrollbar {
-  display: none;
-}
-
-
-/* =========================================================
-   CATEGORY BUTTONS
-   ========================================================= */
-
-.category-chip {
-
-  flex:
-    0 0 auto;
-
-  padding:
-    12px
-    18px;
-
-  border:
-    1px solid
-    rgba(214, 188, 141, .28);
-
-  color:
-    rgba(255, 253, 248, .70);
-
-  font-size: .63rem;
-
-  letter-spacing: .13em;
-
-  transition:
-    background var(--transition),
-    border-color var(--transition),
-    color var(--transition);
-}
-
-
-.category-chip:hover,
-.category-chip.is-active {
-
-  background: var(--gold);
-
-  border-color: var(--gold);
-
-  color: var(--bg);
-}
-
-
-/* =========================================================
-   PRODUCTS SECTIONS
-   ========================================================= */
-
-.products-section {
-
-  padding:
-    clamp(70px, 8vw, 110px)
-    clamp(24px, 8vw, 120px);
-
-  background: var(--surface);
-}
-
-
-.compact-section {
-
-  padding-top:
-    clamp(58px, 7vw, 90px);
-}
-
-
-/* =========================================================
-   SECTION HEADINGS
-   ========================================================= */
-
-.section-heading {
-
-  max-width: 1390px;
-
-  margin:
-    0 auto
-    38px;
-
-  display: flex;
-
-  align-items: flex-end;
-
-  justify-content: space-between;
-
-  gap: 25px;
-}
-
-
-.section-heading h2 {
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      2.7rem,
-      5vw,
-      5rem
+    container.appendChild(
+      empty
     );
 
-  line-height: .95;
+    return;
 
-  font-weight: 400;
+  }
 
-  letter-spacing: -.035em;
+
+  visibleItems.forEach(
+    (item, index) => {
+
+      const card =
+        createProductCard(item);
+
+      container.appendChild(
+        card
+      );
+
+
+      requestAnimationFrame(() => {
+
+        setTimeout(() => {
+
+          card.classList.remove(
+            "card-enter"
+          );
+
+          card.classList.add(
+            "card-visible"
+          );
+
+        }, index * 45);
+
+      });
+
+    }
+  );
+
 }
 
 
 /* =========================================================
-   VIEW ALL
+   OBTENER CATEGORÍA
    ========================================================= */
 
-.view-all {
+function getCategoryItems(category) {
 
-  border: 0;
+  return menuItems.filter(
+    item =>
+      item.categoria === category
+  );
 
-  background: transparent;
-
-  color: var(--gold);
-
-  font-size: .60rem;
-
-  letter-spacing: .15em;
-
-  cursor: pointer;
-
-  white-space: nowrap;
-
-  transition:
-    transform var(--transition),
-    opacity var(--transition);
-}
-
-
-.view-all:hover {
-
-  transform:
-    translateX(4px);
-}
-
-
-.view-all:active {
-
-  transform:
-    translateX(6px);
 }
 
 
 /* =========================================================
-   PRODUCT GRID
+   RENDER CATEGORÍA PRINCIPAL
    ========================================================= */
 
-.menu-container {
+function renderCategory(
+  category,
+  showAll = false,
+  scrollToProducts = true
+) {
 
-  max-width: 1390px;
+  currentCategory =
+    category;
 
-  margin: 0 auto;
+  showingAll =
+    showAll;
 
-  display: grid;
 
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0, 1fr)
+  const items =
+    getCategoryItems(
+      category
     );
 
-  gap: 18px;
+
+  categoryTitle.textContent =
+    categoryNames[category] ||
+    category.toUpperCase();
+
+
+  categoryEyebrow.textContent =
+    categoryEyebrows[category] ||
+    "SELECCIÓN";
+
+
+  renderProducts(
+    menuContainer,
+    items,
+    showAll
+      ? null
+      : INITIAL_VISIBLE
+  );
+
+
+  viewAllButton.textContent =
+    showAll
+      ? "MOSTRAR MENOS"
+      : "VER TODAS";
+
+
+  const arrow =
+    document.createElement("span");
+
+  arrow.textContent =
+    showAll
+      ? "↑"
+      : "→";
+
+  viewAllButton.appendChild(
+    arrow
+  );
+
+
+  if (scrollToProducts) {
+
+    document
+      .getElementById("menu")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+  }
+
 }
 
 
 /* =========================================================
-   PRODUCT CARD
+   BOTONES DE CATEGORÍA
    ========================================================= */
 
-.menu-card {
+categoryButtons.forEach(
+  button => {
 
-  position: relative;
+    button.addEventListener(
+      "click",
+      () => {
 
-  min-width: 0;
+        const category =
+          button.dataset.category;
 
-  overflow: hidden;
 
-  background: var(--card);
+        categoryButtons.forEach(
+          btn => {
 
-  border:
-    1px solid
-    var(--border-light);
+            const active =
+              btn === button;
 
-  cursor: pointer;
+            btn.classList.toggle(
+              "active",
+              active
+            );
 
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease;
-}
+            btn.setAttribute(
+              "aria-selected",
+              active
+            );
 
+          }
+        );
 
-.menu-card:hover {
 
-  transform:
-    translateY(-5px);
+        renderCategory(
+          category,
+          false,
+          true
+        );
 
-  box-shadow:
-    0 18px 35px
-    rgba(0, 0, 0, .11);
-}
-
-
-/* =========================================================
-   PRODUCT IMAGE
-   ========================================================= */
-
-.menu-card-image {
-
-  position: relative;
-
-  aspect-ratio:
-    4 / 4.6;
-
-  overflow: hidden;
-
-  background:
-    var(--surface-2);
-}
-
-
-.menu-card-image img {
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform
-    .55s
-    cubic-bezier(.2, .7, .2, 1);
-}
-
-
-.menu-card:hover
-.menu-card-image img {
-
-  transform:
-    scale(1.045);
-}
-
-
-/* =========================================================
-   IMAGE PLACEHOLDER
-   ========================================================= */
-
-.menu-card-placeholder {
-
-  width: 100%;
-  height: 100%;
-
-  display: grid;
-
-  place-items: center;
-
-  padding: 20px;
-
-  color: var(--gold);
-
-  background:
-
-    radial-gradient(
-      circle at center,
-      rgba(176, 138, 75, .12),
-      transparent 55%
-    ),
-
-    var(--surface-2);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size: 1.1rem;
-
-  text-align: center;
-}
-
-
-/* =========================================================
-   PRODUCT CONTENT
-   ========================================================= */
-
-.menu-card-content {
-
-  padding:
-    17px
-    17px
-    19px;
-}
-
-
-.menu-card-category {
-
-  margin-bottom: 7px;
-
-  color: var(--gold);
-
-  font-size: .53rem;
-
-  letter-spacing: .15em;
-
-  text-transform: uppercase;
-}
-
-
-.menu-card h3 {
-
-  min-height: 2.7em;
-
-  color: var(--text);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size: 1.15rem;
-
-  line-height: 1.15;
-
-  font-weight: 500;
-}
-
-
-.menu-card-price {
-
-  margin-top: 13px;
-
-  color: var(--gold);
-
-  font-size: .90rem;
-
-  font-weight: 600;
-}
-
-
-/* =========================================================
-   PRODUCT DESCRIPTION
-   ========================================================= */
-
-.menu-card-content > p {
-
-  margin-top: 9px;
-
-  color: var(--muted);
-
-  font-size: .72rem;
-
-  line-height: 1.45;
-
-  display:
-    -webkit-box;
-
-  -webkit-line-clamp: 3;
-
-  -webkit-box-orient: vertical;
-
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   FEATURE SECTION
-   ========================================================= */
-
-.feature-section {
-
-  max-width: 1390px;
-
-  margin:
-    0 auto;
-
-  padding:
-    clamp(50px, 7vw, 90px)
-    clamp(24px, 5vw, 70px);
-
-  display: grid;
-
-  grid-template-columns:
-    .9fr
-    1.1fr;
-
-  align-items: center;
-
-  gap:
-    clamp(35px, 7vw, 100px);
-
-  background:
-    var(--surface-2);
-}
-
-
-.feature-copy {
-
-  max-width: 520px;
-}
-
-
-.feature-copy h2 {
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      3.1rem,
-      5.5vw,
-      5.6rem
+      }
     );
 
-  line-height: .90;
-
-  font-weight: 400;
-
-  letter-spacing: -.035em;
-}
+  }
+);
 
 
-.feature-copy h2 em {
+/* =========================================================
+   VER TODAS
+   ========================================================= */
 
-  color: var(--gold);
+viewAllButton.addEventListener(
+  "click",
+  () => {
 
-  font-style: italic;
-}
+    renderCategory(
+      currentCategory,
+      !showingAll,
+      false
+    );
 
-
-.feature-copy > p:not(.eyebrow) {
-
-  max-width: 460px;
-
-  margin:
-    22px 0
-    28px;
-
-  color: var(--muted);
-
-  font-size: .92rem;
-}
+  }
+);
 
 
-.feature-visual {
+/* =========================================================
+   BOTONES SECUNDARIOS
+   ========================================================= */
 
-  position: relative;
+document
+  .querySelectorAll(
+    "[data-category-target]"
+  )
+  .forEach(
+    button => {
 
-  overflow: hidden;
-}
+      button.addEventListener(
+        "click",
+        () => {
 
-
-.feature-visual img {
-
-  width: 100%;
-
-  aspect-ratio:
-    1.18 / 1;
-
-  object-fit: cover;
-
-  transition:
-    transform
-    .60s
-    cubic-bezier(.2, .7, .2, 1);
-}
+          const category =
+            button.dataset.categoryTarget;
 
 
-.feature-visual:hover img {
+          const categoryButton =
+            document.querySelector(
+              `.category-btn[data-category="${category}"]`
+            );
 
-  transform:
-    scale(1.025);
-}
+
+          if (categoryButton) {
+
+            categoryButton.click();
+
+          }
+
+        }
+      );
+
+    }
+  );
 
 
-.feature-badge {
+/* =========================================================
+   PREVIEW LICORES
+   ========================================================= */
 
-  position: absolute;
+function renderLicoresPreview() {
 
-  right: 18px;
+  const items =
+    getCategoryItems(
+      "licores - bar"
+    );
 
-  bottom: 18px;
+  renderProducts(
+    licoresPreview,
+    items,
+    4
+  );
 
-  padding:
-    10px
-    13px;
-
-  background:
-    rgba(23, 19, 15, .88);
-
-  color: var(--gold-light);
-
-  font-size: .55rem;
-
-  letter-spacing: .16em;
 }
 
 
 /* =========================================================
-   FOOTER
+   PREVIEW GASEOSAS
    ========================================================= */
 
-.site-footer {
+function renderGaseosasPreview() {
 
-  padding:
-    52px
-    clamp(24px, 8vw, 120px);
+  const items =
+    getCategoryItems(
+      "bebidas gaseosas"
+    );
 
-  display: flex;
+  renderProducts(
+    gaseosasPreview,
+    items,
+    4
+  );
 
-  justify-content: space-between;
-
-  gap: 30px;
-
-  background: var(--bg);
-
-  color: var(--text-light);
-}
-
-
-.site-footer p {
-
-  margin-top: 13px;
-
-  color:
-    rgba(255, 253, 248, .55);
-
-  font-size: .78rem;
-}
-
-
-.footer-links {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 24px;
-}
-
-
-.footer-links a {
-
-  color: var(--gold-light);
-
-  font-size: .58rem;
-
-  letter-spacing: .14em;
-
-  transition:
-    color var(--transition);
-}
-
-
-.footer-links a:hover {
-
-  color: var(--text-light);
 }
 
 
@@ -1345,796 +1017,326 @@ a {
    MODAL
    ========================================================= */
 
-.modal {
+function openModal(item) {
 
-  position: fixed;
+  modalImage.src =
+    item.imagen || "";
 
-  inset: 0;
+  modalImage.alt =
+    item.nombre;
 
-  z-index: 300;
 
-  display: grid;
+  if (!item.imagen) {
 
-  place-items: center;
+    modalImage.style.display =
+      "none";
 
-  padding: 22px;
+  } else {
 
-  opacity: 0;
+    modalImage.style.display =
+      "block";
 
-  pointer-events: none;
+  }
 
-  transition:
-    opacity .30s ease;
-}
 
+  modalTitle.textContent =
+    item.nombre;
 
-.modal.is-open {
 
-  opacity: 1;
+  modalDescription.textContent =
+    item.descripcion ||
+    "Disfruta esta opción en Mirador de las Camelias.";
 
-  pointer-events: auto;
-}
 
-
-.modal-backdrop {
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    rgba(15, 12, 9, .78);
-
-  backdrop-filter:
-    blur(8px);
-}
-
-
-/* =========================================================
-   MODAL PRODUCT
-   ========================================================= */
-
-.product-detail {
-
-  position: relative;
-
-  z-index: 1;
-
-  width:
-    min(900px, 100%);
-
-  max-height:
-    min(720px, 92vh);
-
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  overflow: hidden;
-
-  background: var(--card);
-
-  box-shadow:
-    0 30px 90px
-    rgba(0, 0, 0, .35);
-
-  transform:
-    translateY(20px)
-    scale(.98);
-
-  transition:
-    transform
-    .35s
-    cubic-bezier(.2, .7, .2, 1);
-}
-
-
-.modal.is-open
-.product-detail {
-
-  transform:
-    translateY(0)
-    scale(1);
-}
-
-
-/* =========================================================
-   MODAL CLOSE
-   ========================================================= */
-
-.modal-close {
-
-  position: absolute;
-
-  top: 13px;
-  right: 13px;
-
-  z-index: 3;
-
-  width: 38px;
-  height: 38px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, .35);
-
-  background:
-    rgba(23, 19, 15, .72);
-
-  color: var(--text-light);
-
-  font-size: 1.4rem;
-
-  cursor: pointer;
-
-  transition:
-    background var(--transition);
-}
-
-
-.modal-close:hover {
-
-  background: var(--gold);
-}
-
-
-/* =========================================================
-   MODAL IMAGE
-   ========================================================= */
-
-.detail-image-wrap {
-
-  min-height: 400px;
-
-  background:
-    var(--surface-2);
-}
-
-
-.detail-image-wrap img {
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-
-/* =========================================================
-   MODAL CONTENT
-   ========================================================= */
-
-.detail-content {
-
-  align-self: center;
-
-  padding:
-    clamp(28px, 5vw, 60px);
-}
-
-
-.detail-content h2 {
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      2.4rem,
-      4vw,
-      4rem
+  modalPrice.textContent =
+    formatPrice(
+      item.precio
     );
 
-  line-height: .95;
 
-  font-weight: 400;
+  modal.classList.add(
+    "is-open"
+  );
 
-  letter-spacing: -.035em;
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "modal-open"
+  );
+
 }
 
 
-.detail-content > p:not(.eyebrow) {
+/* =========================================================
+   CERRAR MODAL
+   ========================================================= */
 
-  margin-top: 18px;
+function closeModal() {
 
-  color: var(--muted);
+  modal.classList.remove(
+    "is-open"
+  );
 
-  font-size: .90rem;
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
 }
 
 
-.detail-price {
+document
+  .querySelectorAll(
+    "[data-close-modal]"
+  )
+  .forEach(
+    element => {
 
-  margin-top: 25px;
+      element.addEventListener(
+        "click",
+        closeModal
+      );
 
-  color: var(--gold);
+    }
+  );
 
-  font-size: 1.25rem;
 
-  font-weight: 600;
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape" &&
+      modal.classList.contains(
+        "is-open"
+      )
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+function closeMobileNav() {
+
+  menuToggle.classList.remove(
+    "is-open"
+  );
+
+  mobileNav.classList.remove(
+    "is-open"
+  );
+
+  menuToggle.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  mobileNav.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
 }
+
+
+menuToggle.addEventListener(
+  "click",
+  () => {
+
+    const isOpen =
+      menuToggle.classList.toggle(
+        "is-open"
+      );
+
+
+    mobileNav.classList.toggle(
+      "is-open",
+      isOpen
+    );
+
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+
+    mobileNav.setAttribute(
+      "aria-hidden",
+      String(!isOpen)
+    );
+
+  }
+);
+
+
+/* Cerrar menú al seleccionar */
+
+mobileNav
+  .querySelectorAll("a")
+  .forEach(
+    link => {
+
+      link.addEventListener(
+        "click",
+        closeMobileNav
+      );
+
+    }
+  );
 
 
 /* =========================================================
    BACK TO TOP
    ========================================================= */
 
-.back-to-top {
-
-  position: fixed;
-
-  right: 22px;
-
-  bottom: 22px;
-
-  z-index: 90;
-
-  width: 42px;
-  height: 42px;
-
-  border:
-    1px solid
-    var(--gold);
-
-  background:
-    var(--bg);
-
-  color:
-    var(--gold-light);
-
-  cursor: pointer;
-
-  opacity: 0;
-
-  transform:
-    translateY(12px);
-
-  pointer-events: none;
-
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
-}
-
-
-.back-to-top.is-visible {
-
-  opacity: 1;
-
-  transform:
-    translateY(0);
-
-  pointer-events: auto;
-}
-
-
-.back-to-top:hover {
-
-  background: var(--gold);
-
-  color: var(--bg);
-}
-
-
-/* =========================================================
-   REVEAL ANIMATIONS
-   ========================================================= */
-
-.reveal {
-
-  opacity: 0;
-
-  transform:
-    translateY(22px);
-
-  transition:
-    opacity .70s ease,
-    transform .70s
-    cubic-bezier(.2, .7, .2, 1);
-}
-
-
-.reveal.is-visible {
-
-  opacity: 1;
-
-  transform:
-    translateY(0);
-}
-
-
-/* =========================================================
-   CARD ANIMATION
-   ========================================================= */
-
-.card-reveal {
-
-  animation:
-    cardReveal
-    .45s
-    both;
-}
-
-
-@keyframes cardReveal {
-
-  from {
-
-    opacity: 0;
-
-    transform:
-      translateY(16px);
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform:
-      translateY(0);
-  }
-}
-
-
-/* =========================================================
-   HERO FLOAT
-   ========================================================= */
-
-@keyframes floatImage {
-
-  0%,
-  100% {
-
-    transform:
-      translateY(0);
-  }
-
-  50% {
-
-    transform:
-      translateY(-8px);
-  }
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1120px) {
-
-  .desktop-nav {
-
-    gap: 14px;
-  }
-
-
-  .desktop-nav a {
-
-    font-size: .57rem;
-  }
-
-
-  .hero {
-
-    grid-template-columns:
-      1fr
-      .9fr;
-  }
-
-
-  .menu-container {
-
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(0, 1fr)
+window.addEventListener(
+  "scroll",
+  () => {
+
+    if (
+      window.scrollY > 500
+    ) {
+
+      backToTop.classList.add(
+        "visible"
       );
+
+    } else {
+
+      backToTop.classList.remove(
+        "visible"
+      );
+
+    }
+
+  },
+  {
+    passive: true
   }
+);
+
+
+backToTop.addEventListener(
+  "click",
+  () => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+);
+
+
+/* =========================================================
+   REVEAL ON SCROLL
+   ========================================================= */
+
+const revealElements =
+  document.querySelectorAll(
+    ".reveal"
+  );
+
+
+if (
+  "IntersectionObserver" in window
+) {
+
+  const revealObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+  revealElements.forEach(
+    element => {
+
+      revealObserver.observe(
+        element
+      );
+
+    }
+  );
+
+} else {
+
+  revealElements.forEach(
+    element => {
+
+      element.classList.add(
+        "is-visible"
+      );
+
+    }
+  );
 
 }
 
 
 /* =========================================================
-   TABLET / MOBILE
+   RENDER INICIAL
    ========================================================= */
 
-@media (max-width: 850px) {
+renderCategory(
+  "cervezas",
+  false,
+  false
+);
 
-  .desktop-nav,
-  .header-actions .reserve-button {
-
-    display: none;
-  }
-
-
-  .menu-toggle {
-
-    display: block;
-  }
-
-
-  .hero {
-
-    min-height: auto;
-
-    grid-template-columns: 1fr;
-
-    padding-top: 65px;
-
-    padding-bottom: 55px;
-  }
-
-
-  .hero h1 {
-
-    font-size:
-      clamp(
-        3.7rem,
-        13vw,
-        6.4rem
-      );
-  }
-
-
-  .hero-visual {
-
-    min-height: 430px;
-  }
-
-
-  .hero-visual img {
-
-    width:
-      min(70%, 390px);
-  }
-
-
-  .feature-section {
-
-    margin:
-      0 24px;
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .menu-container {
-
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
-  }
-
-
-  .product-detail {
-
-    grid-template-columns: 1fr;
-
-    max-height: 92vh;
-
-    overflow-y: auto;
-  }
-
-
-  .detail-image-wrap {
-
-    min-height: 300px;
-
-    max-height: 48vh;
-  }
-
-}
+renderLicoresPreview();
+renderGaseosasPreview();
 
 
 /* =========================================================
-   MOBILE
+   MENSAJE DE COMPROBACIÓN
    ========================================================= */
 
-@media (max-width: 560px) {
-
-  /* HEADER */
-
-  .site-header {
-
-    min-height: 68px;
-
-    padding:
-      0 18px;
-  }
-
-
-  .mobile-nav {
-
-    inset:
-      68px
-      0
-      auto
-      0;
-  }
-
-
-  .brand-mark {
-
-    width: 34px;
-    height: 34px;
-  }
-
-
-  .brand-copy strong {
-
-    font-size: .82rem;
-  }
-
-
-  /* HERO */
-
-  .hero {
-
-    padding:
-      52px
-      20px
-      42px;
-  }
-
-
-  .hero h1 {
-
-    font-size:
-      clamp(
-        3.35rem,
-        16vw,
-        5rem
-      );
-  }
-
-
-  .hero-text {
-
-    font-size: .86rem;
-  }
-
-
-  .hero-visual {
-
-    min-height: 350px;
-  }
-
-
-  .hero-visual img {
-
-    width: 72%;
-  }
-
-
-  .hero-caption {
-
-    right: 3%;
-
-    font-size: .50rem;
-  }
-
-
-  /* CATEGORY */
-
-  .category-section {
-
-    padding:
-      25px
-      18px
-      17px;
-  }
-
-
-  .categories {
-
-    margin-right: -18px;
-
-    padding-right: 18px;
-  }
-
-
-  .category-chip {
-
-    padding:
-      11px
-      15px;
-
-    font-size: .58rem;
-  }
-
-
-  /* PRODUCTS */
-
-  .products-section {
-
-    padding:
-      58px
-      18px
-      68px;
-  }
-
-
-  .section-heading {
-
-    margin-bottom: 27px;
-  }
-
-
-  .section-heading h2 {
-
-    font-size:
-      clamp(
-        2.35rem,
-        12vw,
-        3.6rem
-      );
-  }
-
-
-  .menu-container {
-
-    gap: 10px;
-  }
-
-
-  .menu-card-image {
-
-    aspect-ratio:
-      1 / 1.08;
-  }
-
-
-  .menu-card-content {
-
-    padding: 12px;
-  }
-
-
-  .menu-card-category {
-
-    font-size: .47rem;
-  }
-
-
-  .menu-card h3 {
-
-    min-height: 3em;
-
-    font-size: .96rem;
-  }
-
-
-  .menu-card-price {
-
-    margin-top: 10px;
-
-    font-size: .78rem;
-  }
-
-
-  .menu-card-content > p {
-
-    font-size: .67rem;
-  }
-
-
-  /* FEATURE */
-
-  .feature-section {
-
-    margin:
-      0 18px;
-
-    padding:
-      40px
-      18px;
-  }
-
-
-  .feature-copy h2 {
-
-    font-size:
-      clamp(
-        2.9rem,
-        14vw,
-        4.5rem
-      );
-  }
-
-
-  /* FOOTER */
-
-  .site-footer {
-
-    padding:
-      42px
-      20px;
-
-    flex-direction: column;
-  }
-
-
-  .footer-links {
-
-    flex-wrap: wrap;
-
-    gap:
-      14px
-      20px;
-  }
-
-
-  /* MODAL */
-
-  .modal {
-
-    padding: 12px;
-  }
-
-
-  .detail-image-wrap {
-
-    min-height: 240px;
-  }
-
-
-  .detail-content {
-
-    padding:
-      28px
-      24px
-      32px;
-  }
-
-
-  .detail-content h2 {
-
-    font-size: 2.7rem;
-  }
-
-
-  /* BACK TO TOP */
-
-  .back-to-top {
-
-    right: 15px;
-
-    bottom: 15px;
-  }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  html {
-
-    scroll-behavior: auto;
-  }
-
-
-  *,
-  *::before,
-  *::after {
-
-    animation-duration:
-      .01ms !important;
-
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      .01ms !important;
-  }
-
-}
+console.log(
+  "Cervecería Mirador cargada correctamente."
+);
+
+console.log(
+  `Productos cargados: ${menuItems.length}`
+);
