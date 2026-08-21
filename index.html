@@ -1,98 +1,754 @@
-
 <!DOCTYPE html>
-<!-- 
-  Declara el tipo de documento como HTML5.
-  Es obligatorio para que el navegador interprete correctamente el código.
--->
 <html lang="es">
-<!-- 
-  lang="es" indica que el contenido está en español.
--->
 
 <head>
-  <!-- Codificación de caracteres para permitir tildes, ñ, símbolos -->
   <meta charset="UTF-8">
-
-  <!-- Hace que el sitio sea responsive en celulares -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Título que aparece en la pestaña del navegador -->
-  <title>Restaurante Bar Mirador de las Camelias</title>
+  <meta
+    name="description"
+    content="Cervecería, michelados, licores y bebidas gaseosas — Mirador de las Camelias"
+  >
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#17130f">
 
+  <title>Cervecería | Mirador de las Camelias</title>
 
-  <!-- Conexión con el archivo CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- FUENTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="cerveceria.css">
 </head>
 
+
 <body>
-  <!-- ===================== -->
-  <!-- HEADER / IDENTIDAD -->
-  <!-- ===================== -->
-  <header class="header">
-    <!-- Nombre principal del restaurante -->
-    <h1>🍽️ Restaurante Bar Mirador de las Camelias</h1>
 
-    <!-- Frase corta o concepto del negocio -->
-    <p>Cocina artesanal & bebidas especiales</p>
-  </header>
+  <div class="page-shell">
 
-  <!-- ===================== -->
-  <!-- CATEGORÍAS DEL MENÚ -->
-  <!-- ===================== -->
-  <nav class="categories">
-    <!-- 
-      Cada botón ejecuta una función de JavaScript.
-      El texto entre comillas es la categoría que se filtra.
-    -->
 
-    <button class="category-btn" data-category="cervezas">Cervezas</button>
-    <button class="category-btn" data-category="michelados">Michelados</button>
-    <button class="category-btn" data-category="licores - bar">Licores - Bar</button>
-    <button class="category-btn" data-category="bebidas gaseosas">Bebidas gaseosas</button>
-    <button class="category-btn" data-category="dulceria - bar">Dulceria Bar</button>
-    <button class="category-btn" data-category="jugos naturales">Jugos naturales</button>
-    <button class="category-btn" data-category="heladeria">Heladeria</button>
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-  </nav>
+    <header class="site-header" id="inicio">
 
-  <!-- ===================== -->
-  <!-- CONTENEDOR DEL MENÚ -->
-  <!-- ===================== -->
-  <main id="menu" class="menu-container">
-    <!-- 
-      IMPORTANTE:
-      Este contenedor empieza vacío.
-      El contenido se genera dinámicamente desde JavaScript.
-    -->
-  </main>
+      <a
+        class="brand"
+        href="#inicio"
+        aria-label="Mirador Cervecería"
+      >
 
-  <!-- ===================== -->
-  <!-- FOOTER / INFORMACIÓN -->
-  <!-- ===================== -->
-  <footer class="footer">
-    <!-- Ubicación del restaurante -->
-    <p>📍 Pereira - Dosquebradas</p>
+        <span class="brand-mark">
+          M
+        </span>
 
-    <!-- Enlace directo a WhatsApp -->
-    <a href="https://wa.me/573176050132" target="_blank">
-      📲 Contáctanos por WhatsApp
-    </a>
-    <!-- Enlace directo a Instagram -->
-    <a href="https://www.instagram.com/miradorlascamelias1?igsh=MXhweWhvYmt3cTV3Mg==" target="_blank">
-      📲 Contáctanos por Instagram
-    </a>
-  </footer>
+        <span class="brand-copy">
+          <strong>MIRADOR</strong>
+          <small>CERVECERÍA</small>
+        </span>
 
-  <!-- ===================== -->
-  <!-- JAVASCRIPT -->
-  <!-- ===================== -->
-  <!-- 
-    Se carga al final para asegurar que todo el HTML
-    esté disponible antes de ejecutar el JS.
-  -->
-  <script src="menu.js"></script>
+      </a>
+
+
+      <!-- NAVBAR DESKTOP -->
+
+      <nav
+        class="desktop-nav"
+        aria-label="Navegación principal"
+      >
+
+        <a href="https://menucamelias.netlify.app">
+          RESTAURANTE
+        </a>
+
+        <a
+          class="is-active"
+          href="#menu"
+        >
+          MENÚ
+        </a>
+
+        <a href="#cervezas">
+          CERVEZAS
+        </a>
+
+        <a href="#michelados">
+          MICHELADOS
+        </a>
+
+        <a href="#licores">
+          LICORES
+        </a>
+
+        <a href="#footer">
+          CONTACTO
+        </a>
+
+      </nav>
+
+
+      <!-- ACCIONES HEADER -->
+
+      <div class="header-actions">
+
+        <a
+          class="reserve-button"
+          href="#menu"
+        >
+          VER MENÚ
+        </a>
+
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MENÚ MÓVIL
+         ===================================================== -->
+
+    <div
+      class="mobile-nav"
+      id="mobileNav"
+      aria-hidden="true"
+    >
+
+      <a href="https://menucamelias.netlify.app">
+        RESTAURANTE
+      </a>
+
+      <a href="#menu">
+        MENÚ
+      </a>
+
+      <a href="#cervezas">
+        CERVEZAS
+      </a>
+
+      <a href="#michelados">
+        MICHELADOS
+      </a>
+
+      <a href="#licores">
+        LICORES - BAR
+      </a>
+
+      <a href="#gaseosas">
+        BEBIDAS GASEOSAS
+      </a>
+
+      <a href="#footer">
+        CONTACTO
+      </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+
+      <!-- ===================================================
+           HERO
+           =================================================== -->
+
+      <section
+        class="hero"
+        aria-labelledby="heroTitle"
+      >
+
+        <div class="hero-copy reveal">
+
+          <p class="eyebrow">
+            CERVEZAS · MICHELADOS · BAR
+          </p>
+
+
+          <h1 id="heroTitle">
+
+            EL MOMENTO
+            <br>
+
+            <em>EMPIEZA AQUÍ</em>
+
+          </h1>
+
+
+          <div
+            class="ornament"
+            aria-hidden="true"
+          >
+            ✦
+          </div>
+
+
+          <p class="hero-text">
+
+            Una carta para brindar, compartir
+            y disfrutar la noche a tu manera.
+
+          </p>
+
+
+          <a
+            class="outline-button"
+            href="#menu"
+          >
+
+            EXPLORAR CARTA
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- IMAGEN PRINCIPAL -->
+
+        <div class="hero-visual reveal">
+
+          <div class="hero-halo"></div>
+
+          <div class="hero-ring"></div>
+
+
+          <img
+            id="heroImage"
+            src="https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_1000,dpr_auto/v1768105003/corona330_lmquee.jpg"
+            alt="Cerveza de la carta de Mirador"
+          >
+
+
+          <div class="hero-caption">
+
+            <span>
+              01
+            </span>
+
+            <i></i>
+
+            <span>
+              CERVECERÍA
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           CATEGORÍAS
+           =================================================== -->
+
+      <section
+        class="category-section"
+        id="menu"
+      >
+
+        <div class="section-kicker">
+          EXPLORA LA CARTA
+        </div>
+
+
+        <div
+          class="categories"
+          id="categories"
+          role="tablist"
+          aria-label="Categorías de Cervecería"
+        >
+
+          <a
+            class="category-chip is-active"
+            href="#cervezas"
+          >
+            CERVEZAS
+          </a>
+
+
+          <a
+            class="category-chip"
+            href="#michelados"
+          >
+            MICHELADOS
+          </a>
+
+
+          <a
+            class="category-chip"
+            href="#licores"
+          >
+            LICORES - BAR
+          </a>
+
+
+          <a
+            class="category-chip"
+            href="#gaseosas"
+          >
+            BEBIDAS GASEOSAS
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           CERVEZAS
+           =================================================== -->
+
+      <section
+        class="products-section"
+        id="cervezas"
+      >
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              SELECCIÓN DE LA CASA
+            </p>
+
+            <h2>
+              CERVEZAS
+            </h2>
+
+          </div>
+
+
+          <button
+            class="view-all"
+            id="viewCervezas"
+            type="button"
+          >
+
+            VER TODAS
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div
+          class="menu-container"
+          id="cervezasContainer"
+        ></div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           FEATURE / MICHELADOS
+           =================================================== -->
+
+      <section
+        class="feature-section reveal"
+      >
+
+        <div class="feature-copy">
+
+          <p class="eyebrow">
+            PARA COMPARTIR
+          </p>
+
+
+          <h2>
+
+            BRINDA
+
+            <br>
+
+            <em>A TU MANERA</em>
+
+          </h2>
+
+
+          <p>
+
+            Cervezas frías, michelados y opciones
+            para acompañar cada encuentro.
+
+          </p>
+
+
+          <button
+            class="outline-button"
+            id="featureButton"
+            type="button"
+          >
+
+            VER MICHELADOS
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div class="feature-visual">
+
+          <img
+            src="https://res.cloudinary.com/dvx8yz3sc/image/upload/f_auto,q_auto,w_1000,dpr_auto/v1768105018/vasomichelado_eynoic.jpg"
+            alt="Michelado tradicional"
+          >
+
+
+          <div class="feature-badge">
+            MICHELADOS
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           MICHELADOS
+           =================================================== -->
+
+      <section
+        class="products-section compact-section"
+        id="michelados"
+      >
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              FRESCOS Y FRÍOS
+            </p>
+
+            <h2>
+              MICHELADOS
+            </h2>
+
+          </div>
+
+
+          <button
+            class="view-all"
+            id="viewMichelados"
+            type="button"
+          >
+
+            VER TODAS
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div
+          class="menu-container"
+          id="micheladosContainer"
+        ></div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           LICORES - BAR
+           =================================================== -->
+
+      <section
+        class="products-section compact-section"
+        id="licores"
+      >
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              BARRA
+            </p>
+
+            <h2>
+              LICORES - BAR
+            </h2>
+
+          </div>
+
+
+          <button
+            class="view-all"
+            id="viewLicores"
+            type="button"
+          >
+
+            VER TODAS
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div
+          class="menu-container"
+          id="licoresContainer"
+        ></div>
+
+      </section>
+
+
+
+      <!-- ===================================================
+           BEBIDAS GASEOSAS
+           =================================================== -->
+
+      <section
+        class="products-section compact-section"
+        id="gaseosas"
+      >
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              REFRESCANTES
+            </p>
+
+            <h2>
+              BEBIDAS GASEOSAS
+            </h2>
+
+          </div>
+
+
+          <button
+            class="view-all"
+            id="viewGaseosas"
+            type="button"
+          >
+
+            VER TODAS
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div
+          class="menu-container"
+          id="gaseosasContainer"
+        ></div>
+
+      </section>
+
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer
+      class="site-footer"
+      id="footer"
+    >
+
+      <div>
+
+        <span class="brand-copy">
+
+          <strong>
+            MIRADOR
+          </strong>
+
+          <small>
+            CERVECERÍA
+          </small>
+
+        </span>
+
+
+        <p>
+          Pereira - Dosquebradas
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a
+          href="https://wa.me/573176050132"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WHATSAPP ↗
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/miradorlascamelias1?igsh=MXhweWhvYmt3cTV3Mg=="
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          INSTAGRAM ↗
+        </a>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       MODAL DE PRODUCTO
+       ======================================================= -->
+
+  <div
+    class="modal"
+    id="productModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-modal
+    ></div>
+
+
+    <article
+      class="product-detail"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <button
+        class="modal-close"
+        type="button"
+        data-close-modal
+        aria-label="Cerrar"
+      >
+        ×
+      </button>
+
+
+      <div class="detail-image-wrap">
+
+        <img
+          id="modalImage"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="detail-content">
+
+        <p class="eyebrow">
+          DETALLES
+        </p>
+
+
+        <h2 id="modalTitle"></h2>
+
+
+        <p id="modalDescription"></p>
+
+
+        <div
+          class="detail-price"
+          id="modalPrice"
+        ></div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       BOTÓN VOLVER ARRIBA
+       ===================================================== -->
+
+  <button
+    class="back-to-top"
+    id="backToTop"
+    type="button"
+    aria-label="Volver arriba"
+  >
+    ↑
+  </button>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script src="cerveceria.js"></script>
+
 </body>
 </html>
-
