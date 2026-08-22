@@ -3,7 +3,6 @@
    CERVECERÍA
    ========================================================= */
 
-
 /* =========================================================
    DATOS DEL MENÚ
    ========================================================= */
@@ -473,8 +472,15 @@ const categoryEyebrows = {
    REFERENCIAS DOM
    ========================================================= */
 
+/*
+   Aceptamos tanto #menuContainer como #menu.
+   Esto evita que el sistema se rompa si el HTML utiliza
+   uno u otro nombre.
+*/
+
 const menuContainer =
-  document.getElementById("menuContainer");
+  document.getElementById("menuContainer") ||
+  document.getElementById("menu");
 
 const licoresPreview =
   document.getElementById("licoresPreview");
@@ -527,7 +533,6 @@ const backToTop =
    ========================================================= */
 
 let currentCategory = "cervezas";
-
 let showingAll = false;
 
 
@@ -555,7 +560,8 @@ function createProductCard(item) {
   const card =
     document.createElement("article");
 
-  card.className = "menu-card card-enter";
+  card.className =
+    "menu-card card-enter";
 
   card.setAttribute(
     "tabindex",
@@ -568,7 +574,7 @@ function createProductCard(item) {
   );
 
 
-  /* Imagen */
+  /* IMAGEN */
 
   const imageWrapper =
     document.createElement("div");
@@ -582,11 +588,15 @@ function createProductCard(item) {
     const image =
       document.createElement("img");
 
-    image.src = item.imagen;
+    image.src =
+      item.imagen;
 
-    image.alt = item.nombre;
+    image.alt =
+      item.nombre;
 
-    image.loading = "lazy";
+    image.loading =
+      "lazy";
+
 
     image.onerror = () => {
 
@@ -598,7 +608,10 @@ function createProductCard(item) {
 
     };
 
-    imageWrapper.appendChild(image);
+
+    imageWrapper.appendChild(
+      image
+    );
 
   } else {
 
@@ -609,7 +622,7 @@ function createProductCard(item) {
   }
 
 
-  /* Contenido */
+  /* CONTENIDO */
 
   const content =
     document.createElement("div");
@@ -623,6 +636,11 @@ function createProductCard(item) {
 
   title.textContent =
     item.nombre;
+
+
+  content.appendChild(
+    title
+  );
 
 
   if (item.descripcion) {
@@ -649,13 +667,9 @@ function createProductCard(item) {
   price.textContent =
     formatPrice(item.precio);
 
-
-  content.insertBefore(
-    title,
-    content.firstChild
+  content.appendChild(
+    price
   );
-
-  content.appendChild(price);
 
 
   card.appendChild(
@@ -667,38 +681,40 @@ function createProductCard(item) {
   );
 
 
-  /* Abrir modal */
+  /* MODAL */
 
-  const openCard = () => {
+  if (modal) {
 
-    openModal(item);
-
-  };
-
-
-  card.addEventListener(
-    "click",
-    openCard
-  );
+    const openCard = () => {
+      openModal(item);
+    };
 
 
-  card.addEventListener(
-    "keydown",
-    event => {
+    card.addEventListener(
+      "click",
+      openCard
+    );
 
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
 
-        event.preventDefault();
+    card.addEventListener(
+      "keydown",
+      event => {
 
-        openCard();
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          openCard();
+
+        }
 
       }
+    );
 
-    }
-  );
+  }
 
 
   return card;
@@ -716,7 +732,9 @@ function renderProducts(
   limit = null
 ) {
 
-  if (!container) return;
+  if (!container)
+    return;
+
 
   container.innerHTML = "";
 
@@ -727,16 +745,15 @@ function renderProducts(
       : items.slice(0, limit);
 
 
-  if (visibleItems.length === 0) {
+  if (
+    visibleItems.length === 0
+  ) {
 
     const empty =
       document.createElement("p");
 
     empty.textContent =
       "No hay productos disponibles.";
-
-    empty.style.color =
-      "var(--muted)";
 
     container.appendChild(
       empty
@@ -781,10 +798,12 @@ function renderProducts(
 
 
 /* =========================================================
-   OBTENER CATEGORÍA
+   OBTENER PRODUCTOS DE CATEGORÍA
    ========================================================= */
 
-function getCategoryItems(category) {
+function getCategoryItems(
+  category
+) {
 
   return menuItems.filter(
     item =>
@@ -817,14 +836,22 @@ function renderCategory(
     );
 
 
-  categoryTitle.textContent =
-    categoryNames[category] ||
-    category.toUpperCase();
+  if (categoryTitle) {
+
+    categoryTitle.textContent =
+      categoryNames[category] ||
+      category.toUpperCase();
+
+  }
 
 
-  categoryEyebrow.textContent =
-    categoryEyebrows[category] ||
-    "SELECCIÓN";
+  if (categoryEyebrow) {
+
+    categoryEyebrow.textContent =
+      categoryEyebrows[category] ||
+      "SELECCIÓN";
+
+  }
 
 
   renderProducts(
@@ -836,33 +863,34 @@ function renderCategory(
   );
 
 
-  viewAllButton.textContent =
-    showAll
-      ? "MOSTRAR MENOS"
-      : "VER TODAS";
+  if (viewAllButton) {
+
+    viewAllButton.innerHTML =
+      showAll
+        ? 'MOSTRAR MENOS <span>↑</span>'
+        : 'VER TODAS <span>→</span>';
+
+  }
 
 
-  const arrow =
-    document.createElement("span");
+  if (
+    scrollToProducts &&
+    menuContainer
+  ) {
 
-  arrow.textContent =
-    showAll
-      ? "↑"
-      : "→";
-
-  viewAllButton.appendChild(
-    arrow
-  );
+    const menuSection =
+      document.getElementById("menu") ||
+      menuContainer.closest("section");
 
 
-  if (scrollToProducts) {
+    if (menuSection) {
 
-    document
-      .getElementById("menu")
-      .scrollIntoView({
+      menuSection.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
+
+    }
 
   }
 
@@ -897,7 +925,7 @@ categoryButtons.forEach(
 
             btn.setAttribute(
               "aria-selected",
-              active
+              String(active)
             );
 
           }
@@ -921,18 +949,22 @@ categoryButtons.forEach(
    VER TODAS
    ========================================================= */
 
-viewAllButton.addEventListener(
-  "click",
-  () => {
+if (viewAllButton) {
 
-    renderCategory(
-      currentCategory,
-      !showingAll,
-      false
-    );
+  viewAllButton.addEventListener(
+    "click",
+    () => {
 
-  }
-);
+      renderCategory(
+        currentCategory,
+        !showingAll,
+        false
+      );
+
+    }
+  );
+
+}
 
 
 /* =========================================================
@@ -979,10 +1011,15 @@ document
 
 function renderLicoresPreview() {
 
+  if (!licoresPreview)
+    return;
+
+
   const items =
     getCategoryItems(
       "licores - bar"
     );
+
 
   renderProducts(
     licoresPreview,
@@ -999,10 +1036,15 @@ function renderLicoresPreview() {
 
 function renderGaseosasPreview() {
 
+  if (!gaseosasPreview)
+    return;
+
+
   const items =
     getCategoryItems(
       "bebidas gaseosas"
     );
+
 
   renderProducts(
     gaseosasPreview,
@@ -1018,6 +1060,17 @@ function renderGaseosasPreview() {
    ========================================================= */
 
 function openModal(item) {
+
+  if (
+    !modal ||
+    !modalImage ||
+    !modalTitle ||
+    !modalDescription ||
+    !modalPrice
+  ) {
+    return;
+  }
+
 
   modalImage.src =
     item.imagen || "";
@@ -1076,6 +1129,10 @@ function openModal(item) {
 
 function closeModal() {
 
+  if (!modal)
+    return;
+
+
   modal.classList.remove(
     "is-open"
   );
@@ -1114,6 +1171,7 @@ document.addEventListener(
 
     if (
       event.key === "Escape" &&
+      modal &&
       modal.classList.contains(
         "is-open"
       )
@@ -1128,10 +1186,14 @@ document.addEventListener(
 
 
 /* =========================================================
-   MOBILE MENU
+   MENÚ MÓVIL
    ========================================================= */
 
 function closeMobileNav() {
+
+  if (!menuToggle || !mobileNav)
+    return;
+
 
   menuToggle.classList.remove(
     "is-open"
@@ -1154,95 +1216,104 @@ function closeMobileNav() {
 }
 
 
-menuToggle.addEventListener(
-  "click",
-  () => {
+if (
+  menuToggle &&
+  mobileNav
+) {
 
-    const isOpen =
-      menuToggle.classList.toggle(
-        "is-open"
+  menuToggle.addEventListener(
+    "click",
+    () => {
+
+      const isOpen =
+        menuToggle.classList.toggle(
+          "is-open"
+        );
+
+
+      mobileNav.classList.toggle(
+        "is-open",
+        isOpen
       );
 
 
-    mobileNav.classList.toggle(
-      "is-open",
-      isOpen
-    );
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
 
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-
-
-    mobileNav.setAttribute(
-      "aria-hidden",
-      String(!isOpen)
-    );
-
-  }
-);
-
-
-/* Cerrar menú al seleccionar */
-
-mobileNav
-  .querySelectorAll("a")
-  .forEach(
-    link => {
-
-      link.addEventListener(
-        "click",
-        closeMobileNav
+      mobileNav.setAttribute(
+        "aria-hidden",
+        String(!isOpen)
       );
 
     }
   );
 
 
+  mobileNav
+    .querySelectorAll("a")
+    .forEach(
+      link => {
+
+        link.addEventListener(
+          "click",
+          closeMobileNav
+        );
+
+      }
+    );
+
+}
+
+
 /* =========================================================
    BACK TO TOP
    ========================================================= */
 
-window.addEventListener(
-  "scroll",
-  () => {
+if (backToTop) {
 
-    if (
-      window.scrollY > 500
-    ) {
+  window.addEventListener(
+    "scroll",
+    () => {
 
-      backToTop.classList.add(
-        "visible"
-      );
+      if (
+        window.scrollY > 500
+      ) {
 
-    } else {
+        backToTop.classList.add(
+          "visible"
+        );
 
-      backToTop.classList.remove(
-        "visible"
-      );
+      } else {
+
+        backToTop.classList.remove(
+          "visible"
+        );
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  backToTop.addEventListener(
+    "click",
+    () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
     }
+  );
 
-  },
-  {
-    passive: true
-  }
-);
-
-
-backToTop.addEventListener(
-  "click",
-  () => {
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  }
-);
+}
 
 
 /* =========================================================
@@ -1300,6 +1371,7 @@ if (
     }
   );
 
+
 } else {
 
   revealElements.forEach(
@@ -1319,18 +1391,44 @@ if (
    RENDER INICIAL
    ========================================================= */
 
+/*
+   La primera categoría será CERVEZAS.
+*/
+
+categoryButtons.forEach(
+  button => {
+
+    const active =
+      button.dataset.category ===
+      "cervezas";
+
+    button.classList.toggle(
+      "active",
+      active
+    );
+
+    button.setAttribute(
+      "aria-selected",
+      String(active)
+    );
+
+  }
+);
+
+
 renderCategory(
   "cervezas",
   false,
   false
 );
 
+
 renderLicoresPreview();
 renderGaseosasPreview();
 
 
 /* =========================================================
-   MENSAJE DE COMPROBACIÓN
+   COMPROBACIÓN
    ========================================================= */
 
 console.log(
